@@ -1,0 +1,25 @@
+{
+  "geniusquizApp": {
+    "categorieFormation": {
+      "home": {
+        "title": "Categorie Formations",
+        "createLabel": "Create a new Categorie Formation",
+        "createOrEditLabel": "Create or edit a Categorie Formation",
+        "notFound": "No Categorie Formations found"
+      },
+      "created": "A new Categorie Formation is created with identifier {{ param }}",
+      "updated": "A Categorie Formation is updated with identifier {{ param }}",
+      "deleted": "A Categorie Formation is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Categorie Formation {{ id }}?"
+      },
+      "detail": {
+        "title": "Categorie Formation"
+      },
+      "libele": "Libele",
+      "description": "Description",
+      "imageCouverture": "Image Couverture",
+      "code": "Code"
+    }
+  }
+}

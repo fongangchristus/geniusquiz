@@ -1,0 +1,26 @@
+{
+  "geniusquizApp": {
+    "reponseUser": {
+      "home": {
+        "title": "Reponse Users",
+        "createLabel": "Create a new Reponse User",
+        "createOrEditLabel": "Create or edit a Reponse User",
+        "notFound": "No Reponse Users found"
+      },
+      "created": "A new Reponse User is created with identifier {{ param }}",
+      "updated": "A Reponse User is updated with identifier {{ param }}",
+      "deleted": "A Reponse User is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Reponse User {{ id }}?"
+      },
+      "detail": {
+        "title": "Reponse User"
+      },
+      "dateReponse": "Date Reponse",
+      "libele": "Libele",
+      "quizQuestion": "Quiz Question",
+      "evaluation": "Evaluation",
+      "eventuelReponse": "Eventuel Reponse"
+    }
+  }
+}

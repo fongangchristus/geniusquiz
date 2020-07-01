@@ -1,0 +1,42 @@
+{
+  "name": "Evaluation",
+  "fields": [
+    {
+      "fieldName": "lieu",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "idUser",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "dateEvaluation",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "quiz",
+      "otherEntityRelationshipName": "evaluation",
+      "relationshipName": "quiz",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200701084149",
+  "entityTableName": "evaluation",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,33 @@
+{
+  "geniusquizApp": {
+    "quiz": {
+      "home": {
+        "title": "Quizzes",
+        "createLabel": "Créer un nouveau Quiz",
+        "createOrEditLabel": "Créer ou éditer un Quiz",
+        "notFound": "Aucun Quiz trouvé"
+      },
+      "created": "Un nouveau Quiz a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Quiz avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Quiz avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Quiz {{ id }} ?"
+      },
+      "detail": {
+        "title": "Quiz"
+      },
+      "type": "Type",
+      "idMatiere": "Id Matiere",
+      "entete": "Entete",
+      "description": "Description",
+      "libele": "Libele",
+      "imageCouverture": "Image Couverture",
+      "duree": "Duree",
+      "nbrQuestion": "Nbr Question",
+      "datePublication": "Date Publication",
+      "dateExpiration": "Date Expiration",
+      "matiere": "Matiere",
+      "question": "Question"
+    }
+  }
+}

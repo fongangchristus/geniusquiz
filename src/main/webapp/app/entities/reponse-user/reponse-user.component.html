@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="geniusquizApp.reponseUser.home.title">Reponse Users</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-reponse-user" [routerLink]="['/reponse-user/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="geniusquizApp.reponseUser.home.createLabel">
+            Create a new Reponse User
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="reponseUsers?.length === 0">
+        <span jhiTranslate="geniusquizApp.reponseUser.home.notFound">No reponseUsers found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="reponseUsers && reponseUsers.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateReponse"><span jhiTranslate="geniusquizApp.reponseUser.dateReponse">Date Reponse</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="libele"><span jhiTranslate="geniusquizApp.reponseUser.libele">Libele</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="quizQuestionId"><span jhiTranslate="geniusquizApp.reponseUser.quizQuestion">Quiz Question</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="evaluationId"><span jhiTranslate="geniusquizApp.reponseUser.evaluation">Evaluation</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reponseUser of reponseUsers ;trackBy: trackId">
+                    <td><a [routerLink]="['/reponse-user', reponseUser.id, 'view']">{{ reponseUser.id }}</a></td>
+                    <td>{{ reponseUser.dateReponse | date:'medium' }}</td>
+                    <td>{{ reponseUser.libele }}</td>
+                    <td>
+                        <div *ngIf="reponseUser.quizQuestionId">
+                            <a [routerLink]="['/question', reponseUser.quizQuestionId , 'view']" >{{ reponseUser.quizQuestionId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="reponseUser.evaluationId">
+                            <a [routerLink]="['/evaluation', reponseUser.evaluationId , 'view']" >{{ reponseUser.evaluationId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/reponse-user', reponseUser.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/reponse-user', reponseUser.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(reponseUser)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="reponseUsers && reponseUsers.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

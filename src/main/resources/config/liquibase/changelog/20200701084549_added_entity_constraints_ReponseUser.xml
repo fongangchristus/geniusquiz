@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity ReponseUser.
+    -->
+    <changeSet id="20200701084549-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="quiz_question_id"
+                                 baseTableName="reponse_user"
+                                 constraintName="fk_reponse_user_quiz_question_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="question"/>
+
+        <addForeignKeyConstraint baseColumnNames="evaluation_id"
+                                 baseTableName="reponse_user"
+                                 constraintName="fk_reponse_user_evaluation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="evaluation"/>
+
+        <addForeignKeyConstraint baseColumnNames="reponse_user_id"
+                                 baseTableName="reponse_user_eventuel_reponse"
+                                 constraintName="fk_reponse_user_eventuel_reponse_reponse_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reponse_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="eventuel_reponse_id"
+                                 baseTableName="reponse_user_eventuel_reponse"
+                                 constraintName="fk_reponse_user_eventuel_reponse_eventuel_reponse_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="eventuel_reponse"/>
+        
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="option">
+            <h2><span jhiTranslate="geniusquizApp.option.detail.title">Option</span> {{ option.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="geniusquizApp.option.libele">Libele</span></dt>
+                <dd>
+                    <span>{{ option.libele }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.option.description">Description</span></dt>
+                <dd>
+                    <span>{{ option.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.option.imageCouverture">Image Couverture</span></dt>
+                <dd>
+                    <span>{{ option.imageCouverture }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.option.code">Code</span></dt>
+                <dd>
+                    <span>{{ option.code }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.option.quiz">Quiz</span></dt>
+                <dd>
+                    <div *ngIf="option.quizId">
+                        <a [routerLink]="['/cursus', option.quizId, 'view']">{{ option.quizId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/option', option.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

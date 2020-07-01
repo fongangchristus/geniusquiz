@@ -1,0 +1,49 @@
+{
+  "name": "ReponseUser",
+  "fields": [
+    {
+      "fieldName": "dateReponse",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "libele",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "question",
+      "otherEntityRelationshipName": "reponseUser",
+      "relationshipName": "quizQuestion",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "evaluation",
+      "otherEntityRelationshipName": "reponseUser",
+      "relationshipName": "evaluation",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "eventuelReponse",
+      "otherEntityRelationshipName": "reponseUser",
+      "relationshipName": "eventuelReponse",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200701084549",
+  "entityTableName": "reponse_user",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

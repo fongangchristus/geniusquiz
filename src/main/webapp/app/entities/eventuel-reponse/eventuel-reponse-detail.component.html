@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="eventuelReponse">
+            <h2><span jhiTranslate="geniusquizApp.eventuelReponse.detail.title">Eventuel Reponse</span> {{ eventuelReponse.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="geniusquizApp.eventuelReponse.libele">Libele</span></dt>
+                <dd>
+                    <span>{{ eventuelReponse.libele }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.eventuelReponse.code">Code</span></dt>
+                <dd>
+                    <span>{{ eventuelReponse.code }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.eventuelReponse.imageCouverture">Image Couverture</span></dt>
+                <dd>
+                    <span>{{ eventuelReponse.imageCouverture }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.eventuelReponse.description">Description</span></dt>
+                <dd>
+                    <span>{{ eventuelReponse.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.eventuelReponse.correctAnswer">Correct Answer</span></dt>
+                <dd>
+                    <span>{{ eventuelReponse.correctAnswer }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.eventuelReponse.point">Point</span></dt>
+                <dd>
+                    <span>{{ eventuelReponse.point }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.eventuelReponse.quiz">Quiz</span></dt>
+                <dd>
+                    <div *ngIf="eventuelReponse.quizId">
+                        <a [routerLink]="['/quiz', eventuelReponse.quizId, 'view']">{{ eventuelReponse.quizId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/eventuel-reponse', eventuelReponse.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

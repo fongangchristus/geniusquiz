@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="classe">
+            <h2><span jhiTranslate="geniusquizApp.classe.detail.title">Classe</span> {{ classe.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="geniusquizApp.classe.libele">Libele</span></dt>
+                <dd>
+                    <span>{{ classe.libele }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.classe.description">Description</span></dt>
+                <dd>
+                    <span>{{ classe.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.classe.imageCouverture">Image Couverture</span></dt>
+                <dd>
+                    <span>{{ classe.imageCouverture }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.classe.code">Code</span></dt>
+                <dd>
+                    <span>{{ classe.code }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.classe.niveau">Niveau</span></dt>
+                <dd>
+                    <div *ngIf="classe.niveauId">
+                        <a [routerLink]="['/niveau', classe.niveauId, 'view']">{{ classe.niveauId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.classe.option">Option</span></dt>
+                <dd>
+                    <div *ngIf="classe.optionId">
+                        <a [routerLink]="['/option', classe.optionId, 'view']">{{ classe.optionId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.classe.categorieFormation">Categorie Formation</span></dt>
+                <dd>
+                    <div *ngIf="classe.categorieFormationId">
+                        <a [routerLink]="['/categorie-formation', classe.categorieFormationId, 'view']">{{ classe.categorieFormationId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.classe.matiere">Matiere</span></dt>
+                <dd>
+                    <span *ngFor="let matiere of classe.matieres; let last = last">
+                        <a [routerLink]="['/matiere', matiere?.id, 'view']">{{ matiere.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/classe', classe.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

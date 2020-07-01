@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cursus">
+            <h2><span jhiTranslate="geniusquizApp.cursus.detail.title">Cursus</span> {{ cursus.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="geniusquizApp.cursus.libele">Libele</span></dt>
+                <dd>
+                    <span>{{ cursus.libele }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.cursus.description">Description</span></dt>
+                <dd>
+                    <span>{{ cursus.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.cursus.imageCouverture">Image Couverture</span></dt>
+                <dd>
+                    <span>{{ cursus.imageCouverture }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.cursus.code">Code</span></dt>
+                <dd>
+                    <span>{{ cursus.code }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cursus', cursus.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

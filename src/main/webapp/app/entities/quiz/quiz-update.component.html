@@ -1,0 +1,116 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-quiz-heading" jhiTranslate="geniusquizApp.quiz.home.createOrEditLabel">Create or edit a Quiz</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.quiz.type" for="field_type">Type</label>
+                    <input type="text" class="form-control" name="type" id="field_type"
+                           formControlName="type"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.quiz.idMatiere" for="field_idMatiere">Id Matiere</label>
+                    <input type="number" class="form-control" name="idMatiere" id="field_idMatiere"
+                           formControlName="idMatiere"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.quiz.entete" for="field_entete">Entete</label>
+                    <input type="text" class="form-control" name="entete" id="field_entete"
+                           formControlName="entete"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.quiz.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.quiz.libele" for="field_libele">Libele</label>
+                    <input type="text" class="form-control" name="libele" id="field_libele"
+                           formControlName="libele"/>
+                    <div *ngIf="editForm.get('libele')!.invalid && (editForm.get('libele')!.dirty || editForm.get('libele')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('libele')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.quiz.imageCouverture" for="field_imageCouverture">Image Couverture</label>
+                    <input type="text" class="form-control" name="imageCouverture" id="field_imageCouverture"
+                           formControlName="imageCouverture"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.quiz.duree" for="field_duree">Duree</label>
+                    <div class="d-flex">
+                        <input id="field_duree" type="datetime-local" class="form-control" name="duree" formControlName="duree" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.quiz.nbrQuestion" for="field_nbrQuestion">Nbr Question</label>
+                    <input type="number" class="form-control" name="nbrQuestion" id="field_nbrQuestion"
+                           formControlName="nbrQuestion"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.quiz.datePublication" for="field_datePublication">Date Publication</label>
+                    <div class="d-flex">
+                        <input id="field_datePublication" type="datetime-local" class="form-control" name="datePublication" formControlName="datePublication" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.quiz.dateExpiration" for="field_dateExpiration">Date Expiration</label>
+                    <div class="d-flex">
+                        <input id="field_dateExpiration" type="datetime-local" class="form-control" name="dateExpiration" formControlName="dateExpiration" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.quiz.matiere" for="field_matiere">Matiere</label>
+                    <select class="form-control" id="field_matiere" name="matiere" formControlName="matiereId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="matiereOption.id" *ngFor="let matiereOption of matieres; trackBy: trackById">{{ matiereOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="geniusquizApp.quiz.question" for="field_questions">Question</label>
+                    <select class="form-control" id="field_questions" multiple name="questions" formControlName="questions">
+                        <option [ngValue]="getSelected(editForm.get('questions')!.value, questionOption)" *ngFor="let questionOption of questions; trackBy: trackById">{{ questionOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('questions')!.invalid && (editForm.get('questions')!.dirty || editForm.get('questions')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('questions')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
