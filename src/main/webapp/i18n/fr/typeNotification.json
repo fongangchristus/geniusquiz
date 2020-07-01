@@ -1,0 +1,10 @@
+{
+  "geniusquizApp": {
+    "TypeNotification": {
+      "null": "",
+      "SMS": "SMS",
+      "MAIL": "MAIL",
+      "PUSH": "PUSH"
+    }
+  }
+}

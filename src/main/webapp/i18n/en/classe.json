@@ -1,0 +1,29 @@
+{
+  "geniusquizApp": {
+    "classe": {
+      "home": {
+        "title": "Classes",
+        "createLabel": "Create a new Classe",
+        "createOrEditLabel": "Create or edit a Classe",
+        "notFound": "No Classes found"
+      },
+      "created": "A new Classe is created with identifier {{ param }}",
+      "updated": "A Classe is updated with identifier {{ param }}",
+      "deleted": "A Classe is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Classe {{ id }}?"
+      },
+      "detail": {
+        "title": "Classe"
+      },
+      "libele": "Libele",
+      "description": "Description",
+      "imageCouverture": "Image Couverture",
+      "code": "Code",
+      "niveau": "Niveau",
+      "option": "Option",
+      "categorieFormation": "Categorie Formation",
+      "matiere": "Matiere"
+    }
+  }
+}

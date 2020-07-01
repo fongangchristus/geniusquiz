@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-question-heading" jhiTranslate="geniusquizApp.question.home.createOrEditLabel">Create or edit a Question</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.question.libele" for="field_libele">Libele</label>
+                    <input type="text" class="form-control" name="libele" id="field_libele"
+                           formControlName="libele"/>
+                    <div *ngIf="editForm.get('libele')!.invalid && (editForm.get('libele')!.dirty || editForm.get('libele')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('libele')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.question.idChapitre" for="field_idChapitre">Id Chapitre</label>
+                    <input type="number" class="form-control" name="idChapitre" id="field_idChapitre"
+                           formControlName="idChapitre"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.question.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.question.imageCouverture" for="field_imageCouverture">Image Couverture</label>
+                    <input type="text" class="form-control" name="imageCouverture" id="field_imageCouverture"
+                           formControlName="imageCouverture"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.question.point" for="field_point">Point</label>
+                    <input type="number" class="form-control" name="point" id="field_point"
+                           formControlName="point"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.question.isActif" for="field_isActif">Is Actif</label>
+                    <input type="checkbox" class="form-control" name="isActif" id="field_isActif"
+                           formControlName="isActif"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.question.chapitre" for="field_chapitre">Chapitre</label>
+                    <select class="form-control" id="field_chapitre" name="chapitre" formControlName="chapitreId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="chapitreOption.id" *ngFor="let chapitreOption of chapitres; trackBy: trackById">{{ chapitreOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

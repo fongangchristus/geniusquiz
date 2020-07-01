@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-evaluation-heading" jhiTranslate="geniusquizApp.evaluation.home.createOrEditLabel">Create or edit a Evaluation</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.evaluation.lieu" for="field_lieu">Lieu</label>
+                    <input type="text" class="form-control" name="lieu" id="field_lieu"
+                           formControlName="lieu"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.evaluation.note" for="field_note">Note</label>
+                    <input type="number" class="form-control" name="note" id="field_note"
+                           formControlName="note"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.evaluation.idUser" for="field_idUser">Id User</label>
+                    <input type="number" class="form-control" name="idUser" id="field_idUser"
+                           formControlName="idUser"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.evaluation.dateEvaluation" for="field_dateEvaluation">Date Evaluation</label>
+                    <div class="d-flex">
+                        <input id="field_dateEvaluation" type="datetime-local" class="form-control" name="dateEvaluation" formControlName="dateEvaluation" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('dateEvaluation')!.invalid && (editForm.get('dateEvaluation')!.dirty || editForm.get('dateEvaluation')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dateEvaluation')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('dateEvaluation')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.evaluation.quiz" for="field_quiz">Quiz</label>
+                    <select class="form-control" id="field_quiz" name="quiz" formControlName="quizId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="quizOption.id" *ngFor="let quizOption of quizzes; trackBy: trackById">{{ quizOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

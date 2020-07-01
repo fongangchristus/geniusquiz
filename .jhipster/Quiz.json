@@ -1,0 +1,75 @@
+{
+  "name": "Quiz",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idMatiere",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "entete",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libele",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "imageCouverture",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "duree",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "nbrQuestion",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "datePublication",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateExpiration",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "matiere",
+      "otherEntityRelationshipName": "quiz",
+      "relationshipName": "matiere",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "question",
+      "otherEntityRelationshipName": "quiz",
+      "relationshipValidateRules": "required",
+      "relationshipName": "question",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200701084049",
+  "entityTableName": "quiz",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

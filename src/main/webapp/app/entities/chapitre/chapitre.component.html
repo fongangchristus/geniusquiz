@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="geniusquizApp.chapitre.home.title">Chapitres</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-chapitre" [routerLink]="['/chapitre/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="geniusquizApp.chapitre.home.createLabel">
+            Create a new Chapitre
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="chapitres?.length === 0">
+        <span jhiTranslate="geniusquizApp.chapitre.home.notFound">No chapitres found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="chapitres && chapitres.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="libele"><span jhiTranslate="geniusquizApp.chapitre.libele">Libele</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="geniusquizApp.chapitre.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="imageCouverture"><span jhiTranslate="geniusquizApp.chapitre.imageCouverture">Image Couverture</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fichierCours"><span jhiTranslate="geniusquizApp.chapitre.fichierCours">Fichier Cours</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="matiereId"><span jhiTranslate="geniusquizApp.chapitre.matiere">Matiere</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let chapitre of chapitres ;trackBy: trackId">
+                    <td><a [routerLink]="['/chapitre', chapitre.id, 'view']">{{ chapitre.id }}</a></td>
+                    <td>{{ chapitre.libele }}</td>
+                    <td>{{ chapitre.description }}</td>
+                    <td>{{ chapitre.imageCouverture }}</td>
+                    <td>{{ chapitre.fichierCours }}</td>
+                    <td>
+                        <div *ngIf="chapitre.matiereId">
+                            <a [routerLink]="['/matiere', chapitre.matiereId , 'view']" >{{ chapitre.matiereId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/chapitre', chapitre.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/chapitre', chapitre.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(chapitre)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="chapitres && chapitres.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

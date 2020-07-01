@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="question">
+            <h2><span jhiTranslate="geniusquizApp.question.detail.title">Question</span> {{ question.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="geniusquizApp.question.libele">Libele</span></dt>
+                <dd>
+                    <span>{{ question.libele }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.question.idChapitre">Id Chapitre</span></dt>
+                <dd>
+                    <span>{{ question.idChapitre }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.question.description">Description</span></dt>
+                <dd>
+                    <span>{{ question.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.question.imageCouverture">Image Couverture</span></dt>
+                <dd>
+                    <span>{{ question.imageCouverture }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.question.point">Point</span></dt>
+                <dd>
+                    <span>{{ question.point }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.question.isActif">Is Actif</span></dt>
+                <dd>
+                    <span>{{ question.isActif }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.question.chapitre">Chapitre</span></dt>
+                <dd>
+                    <div *ngIf="question.chapitreId">
+                        <a [routerLink]="['/chapitre', question.chapitreId, 'view']">{{ question.chapitreId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/question', question.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

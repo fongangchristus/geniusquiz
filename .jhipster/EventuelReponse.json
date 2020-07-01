@@ -1,0 +1,58 @@
+{
+  "name": "EventuelReponse",
+  "fields": [
+    {
+      "fieldName": "libele",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageCouverture",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "correctAnswer",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "point",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "quiz",
+      "otherEntityRelationshipName": "eventuelReponse",
+      "relationshipName": "quiz",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "reponseUser",
+      "otherEntityRelationshipName": "eventuelReponse",
+      "relationshipName": "reponseUser",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200701084349",
+  "entityTableName": "eventuel_reponse",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

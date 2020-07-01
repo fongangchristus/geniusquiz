@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="niveau">
+            <h2><span jhiTranslate="geniusquizApp.niveau.detail.title">Niveau</span> {{ niveau.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="geniusquizApp.niveau.libele">Libele</span></dt>
+                <dd>
+                    <span>{{ niveau.libele }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.niveau.description">Description</span></dt>
+                <dd>
+                    <span>{{ niveau.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.niveau.imageCouverture">Image Couverture</span></dt>
+                <dd>
+                    <span>{{ niveau.imageCouverture }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.niveau.code">Code</span></dt>
+                <dd>
+                    <span>{{ niveau.code }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.niveau.curcus">Curcus</span></dt>
+                <dd>
+                    <div *ngIf="niveau.curcusId">
+                        <a [routerLink]="['/cursus', niveau.curcusId, 'view']">{{ niveau.curcusId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/niveau', niveau.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

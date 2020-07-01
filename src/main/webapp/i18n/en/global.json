@@ -7,6 +7,19 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "quiz": "Quiz",
+        "evaluation": "Evaluation",
+        "question": "Question",
+        "eventuelReponse": "Eventuel Reponse",
+        "chapitre": "Chapitre",
+        "reponseUser": "Reponse User",
+        "matiere": "Matiere",
+        "niveau": "Niveau",
+        "option": "Option",
+        "cursus": "Cursus",
+        "classe": "Classe",
+        "categorieFormation": "Categorie Formation",
+        "notification": "Notification",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

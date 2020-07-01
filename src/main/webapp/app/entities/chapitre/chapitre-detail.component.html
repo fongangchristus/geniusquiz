@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="chapitre">
+            <h2><span jhiTranslate="geniusquizApp.chapitre.detail.title">Chapitre</span> {{ chapitre.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="geniusquizApp.chapitre.libele">Libele</span></dt>
+                <dd>
+                    <span>{{ chapitre.libele }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.chapitre.description">Description</span></dt>
+                <dd>
+                    <span>{{ chapitre.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.chapitre.imageCouverture">Image Couverture</span></dt>
+                <dd>
+                    <span>{{ chapitre.imageCouverture }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.chapitre.fichierCours">Fichier Cours</span></dt>
+                <dd>
+                    <span>{{ chapitre.fichierCours }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.chapitre.matiere">Matiere</span></dt>
+                <dd>
+                    <div *ngIf="chapitre.matiereId">
+                        <a [routerLink]="['/matiere', chapitre.matiereId, 'view']">{{ chapitre.matiereId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/chapitre', chapitre.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

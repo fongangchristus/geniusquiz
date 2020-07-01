@@ -1,0 +1,63 @@
+{
+  "name": "Classe",
+  "fields": [
+    {
+      "fieldName": "libele",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageCouverture",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "niveau",
+      "otherEntityRelationshipName": "classe",
+      "relationshipName": "niveau",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "option",
+      "otherEntityRelationshipName": "classe",
+      "relationshipName": "option",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "categorieFormation",
+      "otherEntityRelationshipName": "classe",
+      "relationshipName": "categorieFormation",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "matiere",
+      "otherEntityRelationshipName": "classe",
+      "relationshipName": "matiere",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200701085049",
+  "entityTableName": "classe",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

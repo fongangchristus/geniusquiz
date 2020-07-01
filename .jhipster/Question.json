@@ -1,0 +1,59 @@
+{
+  "name": "Question",
+  "fields": [
+    {
+      "fieldName": "libele",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "idChapitre",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageCouverture",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "point",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "isActif",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "chapitre",
+      "otherEntityRelationshipName": "question",
+      "relationshipName": "chapitre",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "quiz",
+      "otherEntityRelationshipName": "question",
+      "relationshipName": "quiz",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200701084249",
+  "javadoc": "The Employee entity.",
+  "entityTableName": "question",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Niveau",
+  "fields": [
+    {
+      "fieldName": "libele",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageCouverture",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cursus",
+      "otherEntityRelationshipName": "niveau",
+      "relationshipName": "curcus",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200701084749",
+  "entityTableName": "niveau",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

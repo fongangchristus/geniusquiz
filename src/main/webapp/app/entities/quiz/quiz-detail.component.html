@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="quiz">
+            <h2><span jhiTranslate="geniusquizApp.quiz.detail.title">Quiz</span> {{ quiz.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="geniusquizApp.quiz.type">Type</span></dt>
+                <dd>
+                    <span>{{ quiz.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.quiz.idMatiere">Id Matiere</span></dt>
+                <dd>
+                    <span>{{ quiz.idMatiere }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.quiz.entete">Entete</span></dt>
+                <dd>
+                    <span>{{ quiz.entete }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.quiz.description">Description</span></dt>
+                <dd>
+                    <span>{{ quiz.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.quiz.libele">Libele</span></dt>
+                <dd>
+                    <span>{{ quiz.libele }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.quiz.imageCouverture">Image Couverture</span></dt>
+                <dd>
+                    <span>{{ quiz.imageCouverture }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.quiz.duree">Duree</span></dt>
+                <dd>
+                    <span>{{ quiz.duree }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.quiz.nbrQuestion">Nbr Question</span></dt>
+                <dd>
+                    <span>{{ quiz.nbrQuestion }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.quiz.datePublication">Date Publication</span></dt>
+                <dd>
+                    <span>{{ quiz.datePublication }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.quiz.dateExpiration">Date Expiration</span></dt>
+                <dd>
+                    <span>{{ quiz.dateExpiration }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.quiz.matiere">Matiere</span></dt>
+                <dd>
+                    <div *ngIf="quiz.matiereId">
+                        <a [routerLink]="['/matiere', quiz.matiereId, 'view']">{{ quiz.matiereId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.quiz.question">Question</span></dt>
+                <dd>
+                    <span *ngFor="let question of quiz.questions; let last = last">
+                        <a [routerLink]="['/question', question?.id, 'view']">{{ question.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/quiz', quiz.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+{
+  "name": "Notification",
+  "fields": [
+    {
+      "fieldName": "titre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sousTitre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "details",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateNotif",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "typeNotification",
+      "fieldType": "TypeNotification",
+      "fieldValues": "SMS,MAIL,PUSH"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200701085249",
+  "entityTableName": "notification",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

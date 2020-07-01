@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="notification">
+            <h2><span jhiTranslate="geniusquizApp.notification.detail.title">Notification</span> {{ notification.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="geniusquizApp.notification.titre">Titre</span></dt>
+                <dd>
+                    <span>{{ notification.titre }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.notification.sousTitre">Sous Titre</span></dt>
+                <dd>
+                    <span>{{ notification.sousTitre }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.notification.details">Details</span></dt>
+                <dd>
+                    <span>{{ notification.details }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.notification.dateNotif">Date Notif</span></dt>
+                <dd>
+                    <span>{{ notification.dateNotif }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.notification.code">Code</span></dt>
+                <dd>
+                    <span>{{ notification.code }}</span>
+                </dd>
+                <dt><span jhiTranslate="geniusquizApp.notification.typeNotification">Type Notification</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'geniusquizApp.TypeNotification.' + notification.typeNotification }}">{{ notification.typeNotification }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/notification', notification.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

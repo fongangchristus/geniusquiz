@@ -14,7 +14,29 @@
     <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084049_added_entity_Quiz.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084149_added_entity_Evaluation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084249_added_entity_Question.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084349_added_entity_EventuelReponse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084449_added_entity_Chapitre.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084549_added_entity_ReponseUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084649_added_entity_Matiere.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084749_added_entity_Niveau.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084849_added_entity_Option.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084949_added_entity_Cursus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701085049_added_entity_Classe.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701085149_added_entity_CategorieFormation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701085249_added_entity_Notification.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20200701084049_added_entity_constraints_Quiz.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084149_added_entity_constraints_Evaluation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084249_added_entity_constraints_Question.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084349_added_entity_constraints_EventuelReponse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084449_added_entity_constraints_Chapitre.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084549_added_entity_constraints_ReponseUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084749_added_entity_constraints_Niveau.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701084849_added_entity_constraints_Option.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200701085049_added_entity_constraints_Classe.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

@@ -1,0 +1,29 @@
+{
+  "geniusquizApp": {
+    "eventuelReponse": {
+      "home": {
+        "title": "EventuelReponses",
+        "createLabel": "Créer un nouveau Eventuel Reponse",
+        "createOrEditLabel": "Créer ou éditer un Eventuel Reponse",
+        "notFound": "Aucun Eventuel Reponse trouvé"
+      },
+      "created": "Un nouveau Eventuel Reponse a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Eventuel Reponse avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Eventuel Reponse avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Eventuel Reponse {{ id }} ?"
+      },
+      "detail": {
+        "title": "Eventuel Reponse"
+      },
+      "libele": "Libele",
+      "code": "Code",
+      "imageCouverture": "Image Couverture",
+      "description": "Description",
+      "correctAnswer": "Correct Answer",
+      "point": "Point",
+      "quiz": "Quiz",
+      "reponseUser": "Reponse User"
+    }
+  }
+}

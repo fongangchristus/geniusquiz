@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-classe-heading" jhiTranslate="geniusquizApp.classe.home.createOrEditLabel">Create or edit a Classe</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.classe.libele" for="field_libele">Libele</label>
+                    <input type="text" class="form-control" name="libele" id="field_libele"
+                           formControlName="libele"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.classe.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.classe.imageCouverture" for="field_imageCouverture">Image Couverture</label>
+                    <input type="text" class="form-control" name="imageCouverture" id="field_imageCouverture"
+                           formControlName="imageCouverture"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.classe.code" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                           formControlName="code"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.classe.niveau" for="field_niveau">Niveau</label>
+                    <select class="form-control" id="field_niveau" name="niveau" formControlName="niveauId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="niveauOption.id" *ngFor="let niveauOption of niveaus; trackBy: trackById">{{ niveauOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.classe.option" for="field_option">Option</label>
+                    <select class="form-control" id="field_option" name="option" formControlName="optionId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="optionOption.id" *ngFor="let optionOption of options; trackBy: trackById">{{ optionOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="geniusquizApp.classe.categorieFormation" for="field_categorieFormation">Categorie Formation</label>
+                    <select class="form-control" id="field_categorieFormation" name="categorieFormation" formControlName="categorieFormationId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="categorieFormationOption.id" *ngFor="let categorieFormationOption of categorieformations; trackBy: trackById">{{ categorieFormationOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="geniusquizApp.classe.matiere" for="field_matieres">Matiere</label>
+                    <select class="form-control" id="field_matieres" multiple name="matieres" formControlName="matieres">
+                        <option [ngValue]="getSelected(editForm.get('matieres')!.value, matiereOption)" *ngFor="let matiereOption of matieres; trackBy: trackById">{{ matiereOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
