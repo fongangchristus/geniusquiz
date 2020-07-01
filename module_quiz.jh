@@ -1,0 +1,148 @@
+
+entity Quiz {
+	type String,
+    idMatiere Long,
+    entete String,
+	description String,
+    libele String required,
+    imageCouverture String,
+    duree Instant,
+    nbrQuestion Integer,
+    datePublication Instant,
+    dateExpiration Instant,
+    imageCouverture String,
+    
+}
+
+entity Evaluation{
+	lieu String ,
+    note Double ,
+    idUser Long,
+    dateEvaluation Instant required
+}
+
+/**
+ * The Employee entity.
+ */
+entity Question {
+	libele String required,
+    idChapitre Long,
+	description String,
+    imageCouverture String,
+    point Integer,
+    isActif Boolean
+}
+
+entity EventuelReponse {
+	libele String required,
+    code String,
+    imageCouverture String,
+    description String,
+    correctAnswer Boolean,
+    point Integer
+}
+entity Chapitre {
+	libele String required,
+	description String,
+    imageCouverture String,
+    fichierCours String,
+    
+}
+entity ReponseUser{
+	dateReponse Instant,
+    libele String,
+}
+
+entity Matiere{
+	libele String,
+    description String,
+    validite String,
+    imageCouverture String,
+    idOrganisation Long
+}
+entity Niveau{
+	libele String,
+    description String,
+    imageCouverture String,
+    code String
+}
+entity Option{
+	libele String,
+    description String,
+    imageCouverture String,
+    code String
+}
+entity Cursus{
+	libele String,
+    description String,
+    imageCouverture String,
+    code String
+}
+entity Classe{
+	libele String,
+    description String,
+    imageCouverture String,
+    code String
+}
+entity CategorieFormation{
+	libele String,
+    description String,
+    imageCouverture String,
+    code String
+}
+enum TypeNotification {
+  SMS, MAIL, PUSH
+}
+entity Notification{
+	titre String,
+    sousTitre String,
+    details String,
+    dateNotif Instant,
+    code String,
+    typeNotification TypeNotification,
+}
+
+/**
+*enum TypeEtab { 
+*    PUBLIQUE, PRIVEE
+*}
+**/
+relationship OneToOne{
+	ReponseUser {quizQuestion} to Question ,
+    
+}
+relationship ManyToMany{
+	Quiz {question required} to Question{quiz} , 
+    ReponseUser{eventuelReponse} to EventuelReponse{reponseUser},
+    Classe {matiere} to Matiere {classe}
+
+}
+
+// defining multiple OneToMany relationships with comments
+relationship ManyToOne {
+	Evaluation {quiz} to Quiz ,
+    Niveau {curcus} to Cursus ,
+    Classe {niveau} to Niveau,
+    Classe {option} to Option,
+    Option {quiz} to Cursus ,
+	//Organisation{localisation} to Localisation,
+    EventuelReponse {quiz} to Quiz,
+    Question {chapitre} to Chapitre,
+    ReponseUser {evaluation} to Evaluation,
+    Chapitre {matiere} to Matiere,
+    Quiz {matiere} to Matiere,
+    Classe {categorieFormation} to CategorieFormation,
+    
+}
+
+
+paginate all with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
